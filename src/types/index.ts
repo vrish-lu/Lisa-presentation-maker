@@ -79,6 +79,31 @@ export type SlideGenerationResponse = {
   slides: SlideCard[];
 };
 
+// API request/response types
+export type GenerateRequest = {
+  title: string;
+  outline: OutlineItem[];
+  theme: string;
+  amountOfText: string;
+  slideCount: number;
+  imageSource: string;
+  imageStyle: string;
+};
+
+export type GenerateResponse = {
+  slides: SlideCard[];
+};
+
+export type GenerateImageRequest = {
+  prompt: string;
+  style: string;
+};
+
+export type GenerateImageResponse = {
+  url: string;
+  alt: string;
+};
+
 // Component props types
 export type SlideCardProps = {
   slide: SlideCard;
@@ -114,10 +139,40 @@ export type OutlineItem = {
   title: string;
   bullets: string[];
   layout?: 'image-left' | 'image-right' | 'image-bottom' | 'image-top' | 'full-image' | 'text-only' | 'title-only' | 'split' | '2-columns' | '3-columns' | '4-columns' | 'paragraph';
+  titleHtml?: string;
+  bulletsHtml?: string[];
+  elements?: Array<{
+    id: string;
+    svg: string;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  }>;
 };
 
 export type ThemeSelectorProps = {
   selectedTheme: ThemeTemplate;
   onThemeChange: (theme: ThemeTemplate) => void;
   themes: ThemeTemplate[];
+};
+
+// Rich text types
+export type TextBlock = {
+  id: string;
+  type: 'paragraph' | 'heading' | 'list' | 'quote';
+  content: string;
+  level?: number;
+  listType?: 'bullet' | 'numbered';
+  alignment?: 'left' | 'center' | 'right';
+  color?: string;
+  fontSize?: string;
+};
+
+// Download button props
+export type DownloadButtonProps = {
+  slides: SlideCard[];
+  title: string;
+  disabled: boolean;
+  theme: ThemeTemplate;
 }; 

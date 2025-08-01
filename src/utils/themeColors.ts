@@ -68,12 +68,10 @@ const FONT_MAPPING = {
   'Dancing Script': 'Arial',
   'Impact': 'Arial',
   'Comic Sans MS': 'Arial',
-  
-  // Fallback
   'default': 'Arial'
 };
 
-export function getContrastingTextColors(theme) {
+export function getContrastingTextColors(theme: any) {
   if (!theme) {
     return {
       title: '#000000',
@@ -85,7 +83,7 @@ export function getContrastingTextColors(theme) {
   }
 
   // Theme-specific color mappings for better contrast and readability
-  const themeColorMappings = {
+  const themeColorMappings: Record<string, any> = {
     'modern-blue': {
       title: '#1e40af',
       text: '#1e3a8a',
